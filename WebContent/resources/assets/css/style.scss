@@ -1,0 +1,695 @@
+* {
+    -moz-border-radius: 0 !important;
+    outline-color: #ffde15;
+}
+@font-face {
+    font-family: 'Open Sans';
+    src: url('../fonts/opensans-regular-webfont.eot');
+    src: url('../fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff'),
+         url('../fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('../fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Oxygen';
+    src: url('../fonts/oxygen-regular-webfont.eot');
+    src: url('../fonts/oxygen-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/oxygen-regular-webfont.woff2') format('woff2'),
+         url('../fonts/oxygen-regular-webfont.woff') format('woff'),
+         url('../fonts/oxygen-regular-webfont.ttf') format('truetype'),
+         url('../fonts/oxygen-regular-webfont.svg#oxygenregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+$primary: #34495E;
+$secondary: #2C3E50;
+
+$secondaryDark: #0C0C0C;
+
+$greyLite: #ECF0F1;
+$greyMid: #BDC3C7;
+$greyDark: #95A5A6;
+
+/*
+*  html5 doctor css reset | http://html5doctor.com/html-5-reset-stylesheet
+*/
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    -moz-outline: 0;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover,
+a:focus {
+    outline: 0;
+    text-decoration: none !important;
+}
+
+ins {
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+input,
+select,
+img {
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none !important;
+}
+/* ****************Mixins*************************** */
+@mixin user-select($value) {
+    -webkit-user-select: $value;
+    -moz-user-select: $value;
+    -ms-user-select: $value;
+    user-select: $value;
+}
+
+@mixin outline($value) {
+    outline: $value !important;
+    -moz-outline: $value !important;
+    -webkit-outline: $value !important;
+    -ms-outline: $value !important;
+}
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin placeholder {
+    @each $placeholder in "::-webkit-input-placeholder", ":-moz-placeholder", "::-moz-placeholder", ":-ms-input-placeholder" {
+        /* for each placeholder in the above list print the browser vendor
+           selector, chained with its parent element */
+
+        &#{$placeholder} {
+            /* content is replaced with the actual style, passed as a block
+               in the mixin inclusion below */
+
+            @content;
+        }
+    }
+}
+
+@mixin transform($val) {
+    -webkit-transform: $val;
+    -moz-transform: $val;
+    -ms-transform: $val;
+    transform: $val;
+}
+
+@mixin transition($transition...) {
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+
+/*-------------------------------------------------- */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "OpenSans","Oxygen";
+    color: $secondaryDark;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale;
+}
+.subheading
+{
+font-family: "Oxygen";
+padding-bottom: 10px;
+}
+
+.noPadding
+{
+    padding:0 !important;
+}
+
+#modalTheme {
+    border-top: 6px solid $primary;
+    border-radius: 0;
+    background-color: $secondary;
+    color: #fff;
+    overflow: hidden;
+    margin-top: 34px;
+
+    .modal-header, .modal-body, .modal-footer {
+        border: 0;
+
+        a {
+            color: #fff;
+
+            &:hover, &:focus {
+                border-bottom: 1px dotted $primary;
+            }
+        }
+    }
+
+    .modal-header {
+        .modal-title {
+            text-transform: capitalize;
+        }
+
+        .close {
+            border: 3px solid #fff;
+            padding: 2px 6px;
+            border-radius: 50%;
+            color: #fff;
+            background: $secondary;
+            opacity: 1;
+
+            &:hover,
+            &:focus {
+                background: #fff;
+            }
+        }
+    }
+
+    .modal-body {
+        overflow: hidden;
+    }
+}
+
+#signer {
+    .modal-content {
+        margin: 0px auto;
+
+        .modal-header {
+            .modal-title {
+                margin-top: 0px;
+                overflow: hidden;
+                background: $secondary;
+                padding: 5px;
+                display: flex;
+                margin-right: 44px;
+
+                span {
+                    cursor: pointer;
+                    flex: 1;
+                    -webkit-flex: 1;
+                    -moz-flex: 1;
+                    padding: 10px;
+                    .fa
+                    {
+                        padding-right: 5px;
+                    }
+                    &:hover, &:focus {
+                        border-bottom: 1px dotted $primary;
+                    }
+                }
+
+                .activeText {
+                    background: $primary;
+                    color: #fff;
+                    border-bottom: 1px dashed $primary;
+                }
+            }
+        }
+
+        .modal-footer {
+            padding: 7px;
+        }
+    }
+}
+#signin {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#signUp {
+    overflow: hidden;
+}
+/* CheckBox and radio buttons */
+.radio, .checkbox {
+    label {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        padding-left: 25px;
+        margin-right: 15px;
+        font-size: 13px;
+        width: 100%;
+    }
+}
+
+.radio, .checkbox {
+    input {
+        &[type=radio] {
+            display: none;
+        }
+    }
+}
+
+.radio label:before, .checkbox label:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    background-color: #FFDE15;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
+}
+
+.radio label:before, .checkbox label:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    background-color: #FFDE15;
+    box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 1px 0px 0px rgba(255, 255, 255, 0.8);
+}
+
+.radio label:before {
+    border-radius: 8px;
+}
+
+input {
+    &[type=radio]:checked + label:before {
+        content: "\2022";
+        color: #383636;
+        font-size: 30px;
+        text-align: center;
+        line-height: 18px;
+    }
+
+    &[type=checkbox] {
+        display: none;
+    }
+
+    &[type=checkbox]:checked + label:before {
+        content: "\2713";
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        font-size: 15px;
+        color: #383636;
+        font-weight: 700;
+        text-align: center;
+        line-height: 15px;
+    }
+}
+
+.checkbox label:before {
+    border-radius: 3px;
+}
+
+/* CheckBox and radio buttons ends */
+.formTheme {
+    .form-group {
+        .input-group {
+            .input-group-addon {
+                background-color: $primary;
+                border: 1px solid $primary;
+                border-radius: 0;
+                color:#fff;
+            }
+        }
+    }
+
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
+
+    input, textarea, select, option {
+        background-color: $primary;
+        border: 1px solid $primary;
+        overflow: hidden;
+        border-radius: 0 !important;
+        color: #fff;
+
+        &:hover, &:active, &:focus {
+            @include transition(background-color 0.2s 0.2s);
+
+            background-color: $primary;
+            border: 1px solid $primary;
+        }
+
+        @include placeholder {
+            color: #fff;
+            font-weight: 600;
+        }
+    }
+
+    .selectCarret {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+}
+/*-------------------------------------------------- */
+
+header
+{
+    height:50px;
+    .navHeader
+{
+    background: $primary;
+    border: 0;
+    border-radius: 0;
+    .navbar-toggle
+    {
+        background-color: $primary;
+    }
+    .navbar-brand
+    {
+        a 
+        {
+            color:$secondary;
+        }
+    }
+    .links
+    {
+        li 
+        {
+            a 
+            {
+                font-family: "Oxygen";
+                color:#fff;
+                @include transition(all .3s);
+                &:hover, &:focus, &:active
+                {
+                        background-color: darken($primary, 15%);
+                        @include transition(all .3s);
+                }
+            }
+        }
+    }
+}
+}
+.banner
+{
+    #bannerSlides
+    {
+        .carousel-inner
+        {
+            >.item 
+            {
+                >img 
+                {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.managerLogin
+{
+    padding:40px 0;
+    background-color: #ededed;
+    .featuresList
+    {
+        li 
+        {
+            margin:10px 0;
+            i 
+            {
+                vertical-align: middle;
+                padding-right: 5px;
+                font-size: 24px;
+            }
+            p 
+            {
+                display: inline-block;
+                font-family: "OpenSans";
+                font-size: 22px;
+                color:$greyDark;
+            }
+        }
+    }
+    .managerLoginSection
+    {
+        background-color: #fefefe;
+    padding: 14px;
+    box-shadow: 6px 7px 10px #B9B9B9;
+    border-radius: 5px;
+    }
+}
+.adminLogin
+{
+    background-image: url('../img/working2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+        height: 500px;
+}
+footer
+{
+    background-color: $secondaryDark;
+    padding:30px 0;
+    #copyright
+    {
+        font-family: "OpenSans";
+        font-size: 15px;
+        color:#fff;
+    }
+}
+
+
+
+.contact {
+    padding: 40px 0;
+    .section_heading {
+        color: $primary;
+    }
+    .sub_heading {
+        color:$secondaryDark;
+        font-family: "Oxygen";
+        padding: 23px 0;
+        text-transform: uppercase;
+    }
+    .contact_form {
+        font-family: "OpenSans";
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            color:$secondaryDark;
+            font-weight: 700;
+            font-size: 15px;
+            border-radius: 0;
+        }
+    }
+    .contact_address {
+        .contact_address_details {
+            li {
+                padding: 10px 0;
+                font-size: 18px;
+                i {
+                    width: 50px;
+                    height: 50px;
+                    display: inline-block;
+                    background: #000;
+                    color: $primary;
+                    font-size: 23px;
+                    text-align: center;
+                    line-height: 2.3;
+                    border-radius: 50%;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.contact_map {
+    position: relative;
+    .map_media {
+        border: 2px solid $primary;
+        iframe {
+            width: 100%;
+            height: 300px;
+        }
+    }
+    .map_overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 9;
+        background-color: rgba(253, 190, 0, 0.76);
+        padding-top: 135px;
+        #map_marker {
+            font-size: 22px;
+        }
+    }
+}
+.searchBlock
+{
+    
+}
